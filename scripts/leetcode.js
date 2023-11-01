@@ -688,9 +688,9 @@ const loader = setInterval(() => {
           'upload',
           // callback is called when the code upload to git is a success
           () => {
-            if (uploadState['countdown'])
-              clearTimeout(uploadState['countdown']);
-            delete uploadState['countdown'];
+            if (uploadState.countdown)
+              clearTimeout(uploadState.countdown);
+            delete uploadState.countdown;
             uploadState.uploading = false;
             markUploaded();
           },
@@ -704,7 +704,7 @@ const loader = setInterval(() => {
 /* we will start 10 seconds counter and even after that upload is not complete, then we conclude its failed */
 function startUploadCountDown() {
   uploadState.uploading = true;
-  uploadState['countdown'] = setTimeout(() => {
+  uploadState.countdown = setTimeout(() => {
     if (uploadState.uploading === true) {
       // still uploading, then it failed
       uploadState.uploading = false;
